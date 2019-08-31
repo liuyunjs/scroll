@@ -3,29 +3,29 @@
 ---
 
 ```javascript
-@npm: npm install YEventEmitter -S
+@npm: npm install @liuyunjs/eventemitter -S
 
-@yarn: yarn add YEventEmitter
+@yarn: yarn add @liuyunjs/eventemitter
 ```
 
 ## Quick 
 
 ---
 ```javascript
-import YEventEmitter from 'YEventEmitter';
+import EventEmitter from '@liuyunjs/eventemitter';
 
-const yEventEmitter = new YEventEmitter();
+const eventemitter = new EventEmitter();
 
-yEventEmitter.on('start', (...args) => {
+eventemitter.on('start', (...args) => {
   console.log('start', ...args);
 });
 
-yEventEmitter.once('once', (...args) => {
+eventemitter.once('once', (...args) => {
   console.log('once', ...args);
 });
 
-yEventEmitter.emit('start', 'hello', 'world');
-yEventEmitter.emit('once', 'hello', 'world');
+eventemitter.emit('start', 'hello', 'world');
+eventemitter.emit('once', 'hello', 'world');
 
-yEventEmitter.off('start');
+eventemitter.off('start');
 ```
