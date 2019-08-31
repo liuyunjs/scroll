@@ -1,0 +1,27 @@
+{
+  "name": "@liuyunjs/eventemitter",
+  "version": "0.0.1",
+  "description": "简单的订阅发布模式",
+  "author": "liuyunjs",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "dist/eventemitter.es.js",
+  "unpkg": "dist/eventemitter.min.js",
+  "private": false,
+  "devDependencies": {
+    "rollup": "^1.19.4",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.22.1",
+    "rollup-plugin-uglify": "^6.0.2",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/event-emitter"
+  }
+}

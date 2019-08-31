@@ -1,0 +1,10 @@
+.idea/*
+node_modules
+*.lock
+webpack.config.js
+example
+tpl
+tmp
+dist
+lib
+*.log

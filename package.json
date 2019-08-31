@@ -1,0 +1,40 @@
+{
+  "name": "@liuyunjs/scroll",
+  "version": "0.0.1",
+  "description": "一个移动端的滚动插件",
+  "main": "index.js",
+  "author": "liuyunjs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liuyunjs/scroll.git"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-typescript": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/preset-typescript": "^7.3.3",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
+    "file-loader": "^4.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "less-loader": "^5.0.0",
+    "style-loader": "^1.0.0",
+    "ts-loader": "^6.0.4",
+    "typescript": "^3.5.3",
+    "webpack": "^4.39.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "scripts": {
+    "start": "webpack-dev-server"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "better-scroll": "^1.15.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  }
+}
