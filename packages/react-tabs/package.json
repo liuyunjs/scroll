@@ -1,0 +1,47 @@
+{
+  "name": "@liuyunjs/react-carousel",
+  "version": "0.0.3",
+  "description": "移动端滚动插件",
+  "author": "liuyunjs",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "module": "dist/react-carousel.es.js",
+  "unpkg": "dist/react-carousel.min.js",
+  "private": false,
+  "dependencies": {
+    "@types/classnames": "^2.2.9",
+    "@types/invariant": "^2.2.30",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "classnames": "^2.2.6",
+    "invariant": "^2.2.4",
+    "popmotion": "^8.7.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "stylefire": "^6.0.10",
+    "@liuyunjs/timer": "^0.0.3",
+    "@liuyunjs/react-scroll": "^0.0.3",
+    "@liuyunjs/render-class-name": "^0.0.1",
+    "@liuyunjs/scroll-utils": "^0.0.3",
+    "@liuyunjs/scroll-consts": "^0.0.3",
+    "@liuyunjs/react-gesture": "^0.0.3",
+    "tslib": "^1.9.1"
+  },
+  "devDependencies": {
+    "rollup": "^1.19.4",
+    "rollup-plugin-less": "^1.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.22.1",
+    "rollup-plugin-uglify": "^6.0.2",
+    "typescript": "^3.5.3"
+  },
+  "scripts": {
+    "build": "rollup -c rollup.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/scroll"
+  }
+}

@@ -1,14 +1,24 @@
 {
-  "name": "@liuyunjs/timer",
+  "name": "@liuyunjs/scroll",
   "version": "0.0.4",
-  "description": "定时器的封装",
+  "description": "移动端滚动插件",
   "author": "liuyunjs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "dist/timer.es.js",
-  "unpkg": "dist/timer.min.js",
+  "module": "dist/scroll.es.js",
+  "unpkg": "dist/scroll.min.js",
   "private": false,
+  "dependencies": {
+    "@liuyunjs/eventemitter": "^0.0.2",
+    "@liuyunjs/gesture": "^0.0.3",
+    "@liuyunjs/timer": "^0.0.3",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "tslib": "^1.9.1"
+  },
   "devDependencies": {
     "rollup": "^1.19.4",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -22,6 +32,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/timer"
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/scroll"
   }
 }

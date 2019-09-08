@@ -1,4 +1,4 @@
-type AFCallBack =  (e: number) => any;
+type AFCallBack = (e: number) => any;
 
 let prevTime: number = 0;
 let rAF: (cb: AFCallBack) => any;
@@ -35,6 +35,8 @@ export default class Timer {
    * @type {any[]}
    */
   private raf: any[] = [];
+
+  private dbs: any[] = [];
 
   /**
    * 使用 requestAnimationFrame 执行函数
@@ -75,6 +77,17 @@ export default class Timer {
     }
   }
 
+  public debounce(fn: (...args: any[]) => any, time: number): (...args: any[]) => any {
+    return (...args) => {
+      this.clearDebounce();
+      this.create('Timeout', this.dbs, fn, time, ...args);
+    }
+  }
+
+  public clearDebounce() {
+    Timer.clear('Timeout', this.dbs);
+  }
+
   /**
    * 使用 setTimeout 延时执行回调函数
    * @param {() => any} fn 回调函数
@@ -99,13 +112,14 @@ export default class Timer {
    * @param {any[]} arr 保存定时器句柄的数组
    * @param {() => any} fn 回调函数
    * @param {number} time 间隔
+   * @param {any[]} args 参数
    */
-  private create(key: 'Timeout' | 'Interval', arr: any[], fn: () => any, time: number): void {
+  private create(key: 'Timeout' | 'Interval', arr: any[], fn: (...args: any[]) => any, time: number, ...args: any[]): void {
     arr.push(
       (window as any)[`set${key}`](
         () => {
           Timer.clear(key, arr);
-          fn();
+          fn(...args);
         },
         time,
       )
@@ -143,6 +157,7 @@ export default class Timer {
    */
   public destroy() {
     this.cAF();
+    this.clearDebounce();
     this.clearTimeout();
     this.clearInterval();
   }

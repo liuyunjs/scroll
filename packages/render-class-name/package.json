@@ -1,14 +1,17 @@
 {
-  "name": "@liuyunjs/timer",
-  "version": "0.0.4",
-  "description": "定时器的封装",
+  "name": "@liuyunjs/scroll-consts",
+  "version": "0.0.1",
+  "description": "@liuyunjs/scroll constant",
   "author": "liuyunjs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "dist/timer.es.js",
-  "unpkg": "dist/timer.min.js",
-  "private": false,
+  "module": "dist/scroll-consts.es.js",
+  "unpkg": "dist/scroll-consts.min.js",
+  "dependencies": {
+    "@liuyunjs/gesture-utils": "^0.0.2",
+    "tslib": "^1.9.1"
+  },
   "devDependencies": {
     "rollup": "^1.19.4",
     "rollup-plugin-node-resolve": "^5.2.0",
@@ -22,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/timer"
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/gesture-utils"
   }
 }
