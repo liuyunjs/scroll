@@ -1,21 +1,29 @@
 {
-  "name": "@liuyunjs/gesture",
-  "version": "0.0.3",
-  "description": "移动端手势处理",
+  "name": "@liuyunjs/react-gesture",
+  "version": "0.0.2",
+  "description": "react移动端手势处理",
   "author": "liuyunjs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "dist/gesture.es.js",
-  "unpkg": "dist/gesture.min.js",
+  "module": "dist/react-gesture.es.js",
+  "unpkg": "dist/react-gesture.min.js",
   "dependencies": {
-    "@liuyunjs/eventemitter": "^0.0.2",
-    "@liuyunjs/timer": "^0.0.3",
-    "@liuyunjs/gesture-const": "^0.0.2",
-    "@liuyunjs/gesture-utils": "^0.0.2",
+    "@liuyunjs/timer": "^0.0.4",
+    "@liuyunjs/gesture-consts": "^0.0.3",
+    "@liuyunjs/gesture-utils": "^0.0.3",
+    "@liuyunjs/gesture-core": "^0.0.2",
     "tslib": "^1.9.1"
   },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
   "devDependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
     "rollup": "^1.19.4",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
@@ -28,6 +36,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/gesture"
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/react-gesture"
   }
 }

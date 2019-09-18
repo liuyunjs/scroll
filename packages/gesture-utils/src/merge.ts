@@ -8,22 +8,11 @@
  */
 import isUndefined from './is-undefined';
 
-export default function merge(isExtend: boolean | object, target: object, ...args: object[]): object {
+export default function merge(...args: any[]): object {
   let result: any = {};
-  let argsArr: object[] = args;
-  if (typeof isExtend === 'boolean') {
-    if (isExtend) {
-      result = target;
-    } else {
-      argsArr = [target].concat(args);
-    }
-  } else {
-    argsArr = [isExtend, target].concat(args);
-  }
-
   let obj: any;
-  for (let i = 0, len = argsArr.length; i < len; i++) {
-    obj = argsArr[i];
+  for (let i = 0, len = args.length; i < len; i++) {
+    obj = args[i];
     if (typeof obj !== 'object') {
       continue;
     }

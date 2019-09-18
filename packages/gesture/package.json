@@ -1,6 +1,6 @@
 {
   "name": "@liuyunjs/gesture",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "移动端手势处理",
   "author": "liuyunjs",
   "license": "MIT",
@@ -9,12 +9,11 @@
   "module": "dist/gesture.es.js",
   "unpkg": "dist/gesture.min.js",
   "dependencies": {
-    "@liuyunjs/timer": "^0.0.1",
-    "@liuyunjs/eventemitter": "^0.0.1",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "@liuyunjs/eventemitter": "^0.0.3",
+    "@liuyunjs/timer": "^0.0.4",
+    "@liuyunjs/gesture-consts": "^0.0.3",
+    "@liuyunjs/gesture-core": "^0.0.1",
+    "@liuyunjs/gesture-utils": "^0.0.3",
     "tslib": "^1.9.1"
   },
   "devDependencies": {

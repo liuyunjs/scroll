@@ -9,6 +9,7 @@ import typescript from 'rollup-plugin-typescript2';
 import {uglify} from 'rollup-plugin-uglify';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
+import less from 'rollup-plugin-less';
 import pkg from './package.json';
 
 const typescriptConfig = {
@@ -38,10 +39,11 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/scroll.js',
+    file: 'dist/react-scroll.js',
     format: 'umd',
     name: 'scroll',
     exports: 'named',
+    globals: { react: 'React', 'react-dom': 'ReactDOM' }
   },
   external: makeExternalPredicate(peerDeps),
   plugins: [
@@ -49,7 +51,13 @@ const umd = Object.assign({}, config, {
     typescript(noDeclarationConfig),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    }),
+    less(
+      {
+        insert: true,
+        output: 'dist/react-scroll.css'
+      }
+    )
   ]
 });
 

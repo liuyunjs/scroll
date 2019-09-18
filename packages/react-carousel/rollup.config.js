@@ -9,6 +9,8 @@ import typescript from 'rollup-plugin-typescript2';
 import {uglify} from 'rollup-plugin-uglify';
 import resolve from 'rollup-plugin-node-resolve';
 import replace from 'rollup-plugin-replace';
+import less from 'rollup-plugin-less';
+import commonjs from 'rollup-plugin-commonjs';
 import pkg from './package.json';
 
 const typescriptConfig = {
@@ -38,10 +40,11 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/scroll.js',
+    file: 'dist/react-carousel.js',
     format: 'umd',
     name: 'scroll',
     exports: 'named',
+    globals: { react: 'React', 'react-dom': 'ReactDOM' }
   },
   external: makeExternalPredicate(peerDeps),
   plugins: [
@@ -49,7 +52,14 @@ const umd = Object.assign({}, config, {
     typescript(noDeclarationConfig),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    }),
+    commonjs(),
+    less(
+      {
+      insert: true,
+      output: 'dist/react-carousel.css'
+    }
+    )
   ]
 });
 
@@ -63,6 +73,7 @@ const umdProd = Object.assign({}, umd, {
     replace({
       'process.env.NODE_ENV': JSON.stringify('development')
     }),
+    commonjs(),
     uglify()
   ]
 });
@@ -73,7 +84,8 @@ const es = Object.assign({}, config, {
     format: 'es',
     exports: 'named'
   },
-  plugins: [resolve(), typescript(noDeclarationConfig)]
+  plugins: [resolve(),
+    commonjs(), typescript(noDeclarationConfig)]
 });
 
 const cjs = Object.assign({}, config, {
@@ -82,7 +94,8 @@ const cjs = Object.assign({}, config, {
     format: 'cjs',
     exports: 'named'
   },
-  plugins: [resolve(), typescript(typescriptConfig)]
+  plugins: [resolve(),
+    commonjs(), typescript(typescriptConfig)]
 });
 
 export default [umd, umdProd, es, cjs];

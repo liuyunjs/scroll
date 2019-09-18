@@ -18,6 +18,9 @@ import getHandleKey from './get-handle-key';
 import isUndefined from './is-undefined';
 import merge from './merge';
 import upperFirst from './upper-first';
+import getEventName from './get-event-name';
+import mixins from './mixins';
+import bindEvent from './bind-event';
 
 export {
   getEventPassive,
@@ -33,4 +36,7 @@ export {
   isUndefined,
   merge,
   upperFirst,
+  getEventName,
+  mixins,
+  bindEvent,
 }

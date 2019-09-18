@@ -1,5 +1,3 @@
-
-
 /**
  * Created with Webstrom.
  * Author: 刘云
@@ -11,6 +9,7 @@
 import Timer from '@liuyunjs/timer';
 import {getKey, setTranslate, getPX, getClamp} from '@liuyunjs/scroll-utils';
 import {LAYOUT} from '@liuyunjs/scroll-consts';
+import ScrollController from './scroll-controller';
 
 export interface ScrollIndicatorCoreProps {
   direction: 'vertical' | 'horizontal',
@@ -48,16 +47,19 @@ export default class ScrollIndicatorCore {
     this.fadeOut = this.timer.debounce(() => this.fade(0), 200);
   }
 
-  cancelFade():void {
+  cancelFade(): void {
     this.timer.clearDebounce();
   }
 
   fadeIn(): void {
     this.cancelFade();
-    this.fade(1);
+    if (this.wrapperStyle.opacity !== '1'){
+      this.fade(1);
+    }
   }
 
-  updatePosition(current: number[]): void {
+  updatePosition(scroll: ScrollController): void {
+    const current = scroll.current;
     const currentPosition = current[getKey(this.props.direction)];
     let position = -this.proportion * currentPosition;
     if (position > this.maxScroll || position < 0) {
@@ -68,7 +70,12 @@ export default class ScrollIndicatorCore {
     this.translate(position);
   }
 
-  refresh(wrapperSize: number[], maxScroll: number[]): void {
+  refresh(scroll: ScrollController): void {
+    if (!scroll.progress[0]) {
+      return;
+    }
+    const maxScroll = scroll.maxScroll;
+    const wrapperSize = scroll.progress[0].wrapperSize;
     const key = getKey(this.props.direction);
     const wrapperLayoutSize = wrapperSize[key];
     const thumbSize = -maxScroll[key] + wrapperLayoutSize;

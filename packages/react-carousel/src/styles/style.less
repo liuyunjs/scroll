@@ -5,3 +5,113 @@
  * Time: 18:57
  *
  */
+
+.carousel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+
+  &-vertical {
+    .carousel {
+      &-item {
+        display: block;
+      }
+
+      &-indicator {
+        width: 20px;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        &-item {
+          margin: 4px auto;
+          display: block;
+        }
+      }
+    }
+  }
+
+  &-horizontal {
+
+    .carousel{
+      &-item {
+        display: inline-block;
+        vertical-align: top;
+      }
+      &-indicator {
+        height: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        &-item {
+          margin: 6px 4px;
+          display: inline-block;
+          vertical-align: top;
+        }
+      }
+    }
+  }
+
+  &-bottom {
+    .carousel {
+      &-indicator {
+        bottom: 0;
+      }
+    }
+  }
+
+  &-top {
+    .carousel {
+      &-indicator {
+        top: 0;
+      }
+    }
+  }
+
+  &-left {
+    .carousel {
+      &-indicator {
+        left: 0;
+      }
+    }
+  }
+
+  &-right {
+    .carousel {
+      &-indicator {
+        right: 0;
+      }
+    }
+  }
+
+  &-item {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-indicator {
+    position: absolute;
+    &-item {
+      position: relative;
+      width: 8px;
+      height: 8px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    &-point {
+      background-color: #aaa;
+      width: 100%;
+      height: 100%;
+      &-active {
+        background-color: #d9d9d9;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+}

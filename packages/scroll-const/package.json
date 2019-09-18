@@ -6,10 +6,10 @@
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "dist/gesture-utils.es.js",
-  "unpkg": "dist/gesture-utils.js",
+  "module": "dist/scroll-consts.es.js",
+  "unpkg": "dist/scroll-consts.min.js",
   "dependencies": {
-    "@liuyunjs/scroll-utils": "^1.9.1",
+    "@liuyunjs/gesture-utils": "^0.0.3",
     "tslib": "^1.9.1"
   },
   "devDependencies": {
@@ -25,6 +25,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/gesture-utils"
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/scroll-const"
   }
 }

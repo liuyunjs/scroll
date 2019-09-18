@@ -17,9 +17,8 @@ import {
   BounceObj,
   OffsetObj,
 } from '@liuyunjs/scroll-utils';
-import ScrollViewCore from './scroll-view';
-import trigger from '../utils/trigger';
-import getVelocityBounceOffset from '../utils/get-velocity-bounce-offset';
+import {isUndefined} from '@liuyunjs/gesture-utils';
+import ScrollViewCore, {ResizeObserverEntry} from './scroll-view';
 
 export interface ScrollControllerCoreProps extends GestureProps {
   offset?: Offset | number,
@@ -33,6 +32,7 @@ export interface ScrollControllerCoreProps extends GestureProps {
   stopPropagation?: boolean,
   showIndicator?: boolean,
   indicatorFade?: boolean,
+  alwaysBounces?: boolean | Bounces,
 }
 
 export const defaultProps: ScrollControllerCoreProps = {
@@ -43,6 +43,7 @@ export const defaultProps: ScrollControllerCoreProps = {
   preventDefault: true,
   showIndicator: true,
   indicatorFade: true,
+  swipe: false,
 };
 
 export default class ScrollControllerCore {
@@ -57,28 +58,14 @@ export default class ScrollControllerCore {
   stop: () => void;
   resetPosition: () => boolean;
   scrollWithVelocity: (velocity: number[]) => void;
+  switch: boolean[];
+  current: number[];
+  previous: number[];
+  maxScroll: number[];
+  minScroll: number[];
+  bounces: BounceObj;
 
-  get current(): number[] {
-    return this.getNumberTotal('current');
-  }
-
-  get previous(): number[] {
-    return this.getNumberTotal('previous');
-  }
-
-  get maxScroll(): number[] {
-    return this.getNumberTotal('maxScroll');
-  }
-
-  get minScroll(): number[] {
-    return this.getNumberTotal('minScroll');
-  }
-
-  get switch(): boolean[] {
-    return this.getBoolTotal('switch');
-  }
-
-  get bounces(): BounceObj {
+  getBounces(): BounceObj {
     const initial = {min: [false, false], max: [false, false]};
     if (!this.progress) {
       return initial;
@@ -113,15 +100,19 @@ export default class ScrollControllerCore {
   }
 
   connectView(scroll: ScrollViewCore, level?: number): void {
-    if (level == null) {
+    if (isUndefined(level)) {
       this.progress.push(scroll);
     } else {
       this.progress[level] = scroll;
     }
   }
 
-  trigger(eventName: string = '', status: string = 'scroll'): void {
-    trigger.call(this, eventName, status);
+  trigger(eventName: string = '', status: string = 'scroll'): string {
+    return ScrollViewCore.trigger.call(this, eventName, status);
+  }
+
+  refresh(e?: ResizeObserverEntry[]) {
+    this.progress.forEach((scroll) => scroll.refresh(e));
   }
 
   onTouchStart(): void {
@@ -152,7 +143,7 @@ export default class ScrollControllerCore {
         for (let i = max; i >= 0; i--) {
           scroll = this.progress[i];
           if (scroll) {
-            dis = scroll.translateTo(createTranslate2D(next[index], index))[index];
+            dis = scroll.translate(createTranslate2D(distance[index], index))[index];
             if (!dis) {
               return;
             }
@@ -162,7 +153,7 @@ export default class ScrollControllerCore {
         for (let i = 0, len = this.progress.length; i < len; i++) {
           scroll = this.progress[i];
           if (scroll) {
-            dis = scroll.translateTo(createTranslate2D(next[index], index))[index];
+            dis = scroll.translate(createTranslate2D(distance[index], index))[index];
             if (!dis) {
               return;
             }
@@ -180,7 +171,7 @@ export default class ScrollControllerCore {
         max: [0, 0],
       };
     }
-    return getVelocityBounceOffset.call(this, scroll, velocity);
+    return ScrollViewCore.getVelocityBounceOffset.call(this, scroll, velocity);
   }
 
   onPanStart(e: GestureState) {

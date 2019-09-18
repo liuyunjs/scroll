@@ -38,7 +38,7 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/scroll.js',
+    file: 'dist/scroll-core.js',
     format: 'umd',
     name: 'scroll',
     exports: 'named',

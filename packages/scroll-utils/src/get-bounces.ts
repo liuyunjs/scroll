@@ -6,14 +6,20 @@
  *
  */
 
-import {Bounces} from '../view/scroll';
+import {MIN_BOUNCES, MAX_BOUNCES} from '@liuyunjs/scroll-consts';
 import ifNull from './if-null';
-import {MIN_BOUNCES, MAX_BOUNCES} from '../input/consts';
 import run2D from './run-2d';
 
 export interface BounceObj {
   min: boolean[],
   max: boolean[]
+}
+
+export interface Bounces {
+  top?: boolean,
+  right?: boolean,
+  bottom?: boolean,
+  left?: boolean,
 }
 
 export default function getBounces(bounces?: boolean | Bounces): BounceObj {

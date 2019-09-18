@@ -38,7 +38,7 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/gesture-utils.js',
+    file: 'dist/gesture-consts.js',
     format: 'umd',
     name: 'gesture',
     exports: 'named',

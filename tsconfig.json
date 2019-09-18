@@ -19,9 +19,20 @@
     "rootDir": "./",
     "outDir": "lib",
     "paths": {
-      "@liuyunjs/eventemitter": ["./event-emitter/src"],
-      "@liuyunjs/gesture": ["./gesture/src"],
-      "@liuyunjs/timer": ["./timer/src"]
+      "@liuyunjs/eventemitter": ["./event-emitter/lib"],
+      "@liuyunjs/gesture": ["./gesture/lib"],
+      "@liuyunjs/gesture-consts": ["./gesture-const/lib"],
+      "@liuyunjs/gesture-utils": ["./gesture-utils/lib"],
+      "@liuyunjs/scroll-consts": ["./scroll-const/lib"],
+      "@liuyunjs/scroll-utils": ["./scroll-utils/lib"],
+      "@liuyunjs/scroll-core": ["./scroll-core/lib"],
+      "@liuyunjs/gesture-core": ["./gesture-core/lib"],
+      "@liuyunjs/timer": ["./timer/lib"],
+      "@liuyunjs/scroll": ["./scroll/lib"],
+      "@liuyunjs/react-scroll": ["./react-scroll/lib"],
+      "@liuyunjs/react-gesture": ["./react-gesture/lib"],
+      "@liuyunjs/react-carousel": ["./react-carousel/lib"],
+      "@liuyunjs/render-class-name": ["./render-class-name/lib"]
     },
     "baseUrl": "./packages",
     "jsx": "react"

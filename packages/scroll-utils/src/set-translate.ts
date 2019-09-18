@@ -5,7 +5,7 @@
  * Time: 11:23
  *
  */
-import {TRANSFORM, TRANSLATE_Z} from '../input/consts';
+import {TRANSFORM, TRANSLATE_Z} from '@liuyunjs/scroll-consts';
 import getPX from './get-px';
 
 export function setTranslate2D(css: CSSStyleDeclaration, point: number[]) {

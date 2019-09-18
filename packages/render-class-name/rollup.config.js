@@ -38,7 +38,7 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/scroll-consts.js',
+    file: 'dist/render-class-name.js',
     format: 'umd',
     name: 'gesture',
     exports: 'named',

@@ -6,7 +6,7 @@
  *
  */
 
-import {DIRECTION_DOWN, DIRECTION_NONE, DIRECTION_UP, DIRECTION_RIGHT, DIRECTION_LEFT} from '@liuyunjs/gesture';
+import {DIRECTION_DOWN, DIRECTION_NONE, DIRECTION_UP, DIRECTION_RIGHT, DIRECTION_LEFT} from '@liuyunjs/gesture-consts';
 
 export default function getDirection(delta: number[]): 1 | 2 | 4 | 8 | 16 {
   const [x, y] = delta;

@@ -38,10 +38,11 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/gesture.js',
+    file: 'dist/react-gesture.js',
     format: 'umd',
     name: 'gesture',
     exports: 'named',
+    globals: { react: 'React', 'react-dom': 'ReactDOM' }
   },
   external: makeExternalPredicate(peerDeps),
   plugins: [

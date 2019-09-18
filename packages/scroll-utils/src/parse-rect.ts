@@ -5,7 +5,7 @@
  * Time: 11:47
  *
  */
-import {LAYOUT} from '../input/consts';
+import {LAYOUT} from '@liuyunjs/scroll-consts';
 import run2D from './run-2d';
 
 export default function parseRect(target: HTMLElement, e?: DOMRectReadOnly): number[] {

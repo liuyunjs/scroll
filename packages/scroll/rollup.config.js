@@ -38,9 +38,9 @@ const config = {
 
 const umd = Object.assign({}, config, {
   output: {
-    file: 'dist/gesture.js',
+    file: 'dist/scroll.js',
     format: 'umd',
-    name: 'gesture',
+    name: 'scroll',
     exports: 'named',
   },
   external: makeExternalPredicate(peerDeps),
@@ -53,7 +53,7 @@ const umd = Object.assign({}, config, {
   ]
 });
 
-const umdProd = Object.assign({}, umd, {
+const umdProd =Object.assign({}, umd, {
   output: Object.assign({}, umd.output, {
     file: pkg.unpkg,
   }),
@@ -67,23 +67,23 @@ const umdProd = Object.assign({}, umd, {
   ]
 });
 
-const es = Object.assign({}, config, {
+const es = (Object.assign({}, config, {
   output: {
     file: pkg.module,
     format: 'es',
     exports: 'named'
   },
   plugins: [resolve(), typescript(noDeclarationConfig)]
-});
+}));
 
-const cjs = Object.assign({}, config, {
+const cjs = (Object.assign({}, config, {
   output: {
     file: pkg.main,
     format: 'cjs',
     exports: 'named'
   },
   plugins: [resolve(), typescript(typescriptConfig)]
-});
+}));
 
 export default [umd, umdProd, es, cjs];
 // export default [es, cjs];

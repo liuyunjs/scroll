@@ -1,22 +1,20 @@
 {
-  "name": "@liuyunjs/scroll",
-  "version": "0.0.5",
-  "description": "移动端滚动插件",
+  "name": "@liuyunjs/scroll-core",
+  "version": "0.0.2",
+  "description": "@liuyunjs/scroll core",
   "author": "liuyunjs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "dist/scroll.es.js",
-  "unpkg": "dist/scroll.min.js",
+  "module": "dist/scroll-core.es.js",
+  "unpkg": "dist/scroll-core.min.js",
   "private": false,
   "dependencies": {
-    "@liuyunjs/eventemitter": "^0.0.2",
-    "@liuyunjs/gesture": "^0.0.3",
-    "@liuyunjs/timer": "^0.0.3",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
+    "@liuyunjs/gesture-core": "^0.0.1",
+    "@liuyunjs/gesture-utils": "^0.0.3",
+    "@liuyunjs/scroll-utils": "^0.0.1",
+    "@liuyunjs/scroll-consts": "^0.0.1",
+    "@liuyunjs/timer": "^0.0.4",
     "tslib": "^1.9.1"
   },
   "devDependencies": {
@@ -32,6 +30,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/scroll"
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/scroll-core"
   }
 }

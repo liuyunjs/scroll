@@ -28,6 +28,7 @@ export interface ScrollViewCoreProps {
   initial?: number[],
   onResize?: (e: ScrollViewCore) => any,
   direction?: 'vertical' | 'horizontal' | 'all',
+  bounceTime?: number,
 }
 
 export interface ResizeObserverEntry {
@@ -41,12 +42,13 @@ export const defaultProps: ScrollViewCoreProps = {
   direction: 'vertical',
   bounces: true,
   initial: [0, 0],
+  bounceTime: 350,
 };
 
 function resizeHandle(e: ResizeObserverEntry[]) {
   let len = e.length;
-  let wrapperSize: number[];
-  let targetSize: number[];
+  let wrapperSize: number[] = this.wrapperSize;
+  let targetSize: number[] = this.targetSize;
   while (len--) {
     const {target, contentRect} = e[len];
     const size = parseRect(target as HTMLElement, contentRect);
@@ -59,10 +61,11 @@ function resizeHandle(e: ResizeObserverEntry[]) {
   this.parseClamp(wrapperSize, targetSize);
 }
 
-function trigger(eventName: string, status: string): void {
+function trigger(eventName: string, status: string): string {
   const name = getEventName('on', eventName ? getEventName(status, eventName) : status);
   const cb = (this.props as any)[name];
   cb && cb(this);
+  return name;
 }
 
 function getVelocityBounceOffset(scroll: ScrollViewCore, velocity: number[]): OffsetObj {
@@ -105,14 +108,13 @@ export default class ScrollViewCore {
   static getVelocityBounceOffset = getVelocityBounceOffset;
 
   init() {
-    this.targetStyle = this.target.style;
     this.timer = new Timer();
     const {initial, resizePolling} = this.props;
     this.current = initial;
     this.previous = initial;
+    this.wrapperSize = [0, 0];
+    this.targetSize = [0, 0];
     this.setBounces();
-    this.refresh();
-
     this.resizeHandle = this.timer.debounce(resizeHandle.bind(this), resizePolling);
   }
 
@@ -131,7 +133,7 @@ export default class ScrollViewCore {
     this.switch = run2D((index) => {
       return maxScroll[index] < 0 && !!(direction & (index ? DIRECTION_VERTICAL : DIRECTION_HORIZONTAL));
     });
-    this.trigger('resize');
+    this.trigger('resize', '');
   }
 
   refresh(e?: ResizeObserverEntry[]): void {
@@ -141,8 +143,8 @@ export default class ScrollViewCore {
     this.parseClamp(parseRect(this.wrapper), parseRect(this.target));
   }
 
-  trigger(eventName: string = '', status: string = 'scroll'): void {
-    trigger.call(this, eventName, status);
+  trigger(eventName: string = '', status: string = 'scroll'): string {
+    return trigger.call(this, eventName, status);
   }
 
   getOffset(velocity: number[]): OffsetObj {

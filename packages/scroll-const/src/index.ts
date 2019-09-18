@@ -7,7 +7,7 @@
  *
  */
 
-import {getStylePrefix} from '@liuyunjs/scroll-utils';
+import getStylePrefix from './get-style-prefix';
 
 export const CIRCULAR = (t: number) => {
   return 1 + --t * t * t * t * t;
@@ -32,3 +32,7 @@ export const DIRECTION_KEY = [
 export const LAYOUT = ['width', 'height'];
 export const MIN_BOUNCES = ['left', 'top'];
 export const MAX_BOUNCES = ['right', 'bottom'];
+
+export {
+  getStylePrefix,
+}

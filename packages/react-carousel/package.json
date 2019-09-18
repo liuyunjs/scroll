@@ -1,25 +1,40 @@
 {
-  "name": "@liuyunjs/scroll",
-  "version": "0.0.3",
-  "description": "移动端滚动插件",
+  "name": "@liuyunjs/react-carousel",
+  "version": "0.0.2",
+  "description": "react-carousel",
   "author": "liuyunjs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
-  "module": "dist/scroll.es.js",
-  "unpkg": "dist/scroll.min.js",
+  "module": "dist/react-carousel.es.js",
+  "unpkg": "dist/react-carousel.min.js",
+  "private": false,
   "dependencies": {
-    "@liuyunjs/eventemitter": "^0.0.2",
-    "@liuyunjs/gesture": "^0.0.2",
-    "@liuyunjs/timer": "^0.0.2",
+    "@liuyunjs/react-gesture": "^0.0.2",
+    "@liuyunjs/react-scroll": "^0.0.10",
+    "@liuyunjs/render-class-name": "^0.0.1",
+    "@liuyunjs/scroll-consts": "^0.0.1",
+    "@liuyunjs/scroll-utils": "^0.0.1",
+    "@liuyunjs/timer": "^0.0.4",
+    "@types/classnames": "^2.2.9",
+    "classnames": "^2.2.6",
+    "invariant": "^2.2.4",
+    "popmotion": "^8.7.0",
+    "stylefire": "^6.0.10",
+    "tslib": "^1.9.1"
+  },
+  "peerDependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "rollup-plugin-commonjs": "^10.1.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
-    "tslib": "^1.9.1"
-  },
-  "devDependencies": {
     "rollup": "^1.19.4",
+    "rollup-plugin-less": "^1.1.2",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-typescript2": "^0.22.1",
@@ -31,6 +46,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/scroll"
+    "url": "https://github.com/liuyunjs/scroll/tree/master/packages/react-carousel"
   }
 }

@@ -5,3 +5,9 @@
  * Time: 18:44
  *
  */
+
+export default function renderClassName(...args: string[]): string {
+  return args.reduce((prev: string, value: string) => {
+    return `${prev}-${value}`;
+  }, '').slice(1);
+}

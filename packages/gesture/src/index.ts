@@ -6,23 +6,15 @@
  *
  */
 
-import GestureController, {INPUT_TYPE_MAP, Point2D, GestureHandle, GestureState, GestureOptions} from './controller';
-import ReactGesture from './target/react';
-import merge from './utils/merge';
-import getEventName from './utils/get-event-name';
-import getEventPassive from './utils/get-event-passive';
-import getHandleKey from './utils/get-handle-key';
+import GestureCore, {GestureState, defaultOptions, GestureProps, GestureHandle} from '@liuyunjs/gesture-core';
+import Gesture from './gesture';
+
+export default Gesture;
 
 export {
-  GestureController,
-  ReactGesture,
-  Point2D,
-  GestureOptions,
+  GestureCore,
   GestureState,
   GestureHandle,
-  merge,
-  getHandleKey,
-  getEventName,
-  getEventPassive,
-  INPUT_TYPE_MAP,
+  GestureProps,
+  defaultOptions,
 };

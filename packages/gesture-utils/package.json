@@ -1,16 +1,16 @@
 {
   "name": "@liuyunjs/gesture-utils",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "@liuyunjs/gesture utils",
   "author": "liuyunjs",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "module": "dist/gesture-utils.es.js",
-  "unpkg": "dist/gesture-utils.js",
+  "unpkg": "dist/gesture-utils.min.js",
   "dependencies": {
     "tslib": "^1.9.1",
-    "@liuyunjs/gesture": "^0.0.4"
+    "@liuyunjs/gesture-consts": "^0.0.3"
   },
   "devDependencies": {
     "rollup": "^1.19.4",

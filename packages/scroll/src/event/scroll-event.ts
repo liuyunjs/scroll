@@ -5,12 +5,14 @@
  * Time: 20:37
  *
  */
-import {triggerWithEventEmitter} from '../utils/trigger';
+import {getEventName} from '@liuyunjs/gesture-utils';
 
-export default class ScrollViewEvent {
+export default class ScrollEvent {
   emit: (eventName: string, ...args: any[]) => void;
 
-  trigger(eventName: string = '', status: string = 'scroll') {
-    triggerWithEventEmitter.call(this, eventName, status)
+  trigger(eventName: string = '', status: string = 'scroll'):string {
+    const name = getEventName('on', eventName ? getEventName(status, eventName) : status);
+    this.emit(name, this);
+    return name;
   }
 }

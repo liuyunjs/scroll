@@ -7,25 +7,25 @@
  */
 
 import * as React from 'react';
-import {CSSProperties, RefObject} from 'react';
+import {CSSProperties, RefObject, SyntheticEvent} from 'react';
 import {ValueReaction} from 'popmotion';
 import * as popmotion from 'popmotion';
 import {Styler} from 'stylefire';
-import classnames from 'classnames';
+import * as classnames from 'classnames';
 import renderClassName from '@liuyunjs/render-class-name';
-
 
 export interface DotsItemProps {
   itemIndex?: number,
   value?: ValueReaction,
   style?: CSSProperties,
   activeStyle?: CSSProperties,
-  direction: 'vertical' | 'horizontal',
-  infinite: boolean,
-  total: number,
-  prefixCls: string,
-  loopClonesPerSide: number,
+  direction?: 'vertical' | 'horizontal',
+  infinite?: boolean,
+  total?: number,
+  prefixCls?: string,
+  loopClonesPerSide?: number,
   go?: (n: number) => any,
+  onClick?: (e: SyntheticEvent) => any,
 }
 
 export interface DotsItemState {
@@ -65,6 +65,7 @@ export default class DotsItem extends React.PureComponent<DotsItemProps, DotsIte
   activeStyler: Styler;
   inactiveStyler: Styler;
   state: DotsItemState = {};
+  unsubscribe: any;
 
   static getDerivedStateFromProps(nextProps: DotsItemProps, prevState: DotsItemState): null | DotsItemState {
     const {total, loopClonesPerSide, infinite, itemIndex} = nextProps;
@@ -82,9 +83,12 @@ export default class DotsItem extends React.PureComponent<DotsItemProps, DotsIte
     const {value} = this.props;
     this.activeStyler = popmotion.styler(this.active.current);
     this.inactiveStyler = popmotion.styler(this.inactive.current);
-    value.subscribe(this.listener);
+    this.unsubscribe = value.subscribe(this.listener);
   }
 
+  componentWillUnmount() {
+    this.unsubscribe.unsubscribe();
+  }
 
   listener = (v: number) => {
     const {activeInterpolate, inactiveInterpolate} = this.state;
@@ -93,17 +97,17 @@ export default class DotsItem extends React.PureComponent<DotsItemProps, DotsIte
   };
 
   render() {
-    const {activeStyle, prefixCls, style} = this.props;
+    const {activeStyle, prefixCls, style, onClick} = this.props;
 
     const itemCls = renderClassName(prefixCls, 'item');
     const pointCls = renderClassName(prefixCls, 'point');
 
     return (
-      <div className={itemCls}>
+      <div onClick={onClick} className={itemCls}>
         <div className={pointCls} ref={this.inactive} style={style}/>
         <div
           ref={this.active}
-          className={classnames({
+          className={classnames.default({
             [pointCls]: true,
             [renderClassName(pointCls, 'active')]: true,
           })}

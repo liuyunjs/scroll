@@ -6,14 +6,21 @@
  *
  */
 
-import {Offset} from '../view/scroll';
+
+import {MIN_BOUNCES, MAX_BOUNCES} from '@liuyunjs/scroll-consts';
 import ifNull from './if-null';
-import {MIN_BOUNCES, MAX_BOUNCES} from '../input/consts';
 import run2D from './run-2d';
 
 export interface OffsetObj {
   min: number[],
   max: number[]
+}
+
+export interface Offset {
+  top?: number,
+  right?: number,
+  bottom?: number,
+  left?: number,
 }
 
 export default function getOffset(offset?: number | Offset): OffsetObj {

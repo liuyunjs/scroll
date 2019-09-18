@@ -15,7 +15,7 @@ import {
   DIRECTION_DOWN,
   DIRECTION_LEFT,
   DIRECTION_RIGHT
-} from '@liuyunjs/gesture';
+} from '@liuyunjs/gesture-consts';
 
 interface DirectionMap {
   2: string,

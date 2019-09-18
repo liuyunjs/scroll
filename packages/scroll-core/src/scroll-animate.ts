@@ -8,7 +8,7 @@
 import Timer from '@liuyunjs/timer';
 import {ifNull, getClamp, OffsetObj, run2D} from '@liuyunjs/scroll-utils';
 import {CIRCULAR} from '@liuyunjs/scroll-consts';
-import {ScrollControllerCoreProps} from '@liuyunjs/scroll-core';
+import {ScrollControllerCoreProps} from './scroll-controller';
 
 export default class ScrollAnimate {
   wrapper: HTMLElement;
@@ -60,6 +60,7 @@ export default class ScrollAnimate {
     let prev = 0;
     const startPosition = this.current;
     const target = [offsetX, offsetY];
+    this.timer.cAF();
     const step = () => {
       const tween = easingFn(Math.min((Date.now() - startTime) / duration, 1));
       const next = run2D(index => target[index] * (tween - prev));
@@ -104,6 +105,7 @@ export default class ScrollAnimate {
     this.startTime = Date.now();
     let prev: number[] = [0, 0];
     const offset = this.getOffset(velocity);
+    this.timer.cAF();
     const step = () => {
       const next = this.getNextWithVelocity(velocity);
       const distance = run2D(index => next[index] - prev[index]);
