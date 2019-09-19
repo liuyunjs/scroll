@@ -12,17 +12,21 @@
   position: relative;
 
   &-vertical {
-    .carousel {
-      &-item {
-        display: block;
+    >.scroll {
+      >.scroll-target {
+        >.carousel-item {
+          display: block;
+        }
       }
+    }
 
+    > .carousel {
       &-indicator {
         width: 20px;
         right: 0;
         top: 50%;
         transform: translateY(-50%);
-        &-item {
+        > .carousel-indicator-item {
           margin: 4px auto;
           display: block;
         }
@@ -31,18 +35,21 @@
   }
 
   &-horizontal {
-
-    .carousel{
-      &-item {
-        display: inline-block;
-        vertical-align: top;
+    >.scroll {
+      >.scroll-target {
+        >.carousel-item {
+          display: inline-block;
+          vertical-align: top;
+        }
       }
+    }
+    > .carousel {
       &-indicator {
         height: 20px;
         left: 50%;
         transform: translateX(-50%);
         white-space: nowrap;
-        &-item {
+        > .carousel-indicator-item {
           margin: 6px 4px;
           display: inline-block;
           vertical-align: top;
@@ -52,7 +59,7 @@
   }
 
   &-bottom {
-    .carousel {
+    > .carousel {
       &-indicator {
         bottom: 0;
       }
@@ -60,7 +67,7 @@
   }
 
   &-top {
-    .carousel {
+    > .carousel {
       &-indicator {
         top: 0;
       }
@@ -68,7 +75,7 @@
   }
 
   &-left {
-    .carousel {
+    > .carousel {
       &-indicator {
         left: 0;
       }
@@ -76,7 +83,7 @@
   }
 
   &-right {
-    .carousel {
+    > .carousel {
       &-indicator {
         right: 0;
       }
@@ -96,12 +103,13 @@
       height: 8px;
       border-radius: 8px;
       overflow: hidden;
-    }
 
-    &-point {
-      background-color: #aaa;
-      width: 100%;
-      height: 100%;
+      &-inactive {
+        background-color: #aaa;
+        width: 100%;
+        height: 100%;
+      }
+
       &-active {
         background-color: #d9d9d9;
         opacity: 0;

@@ -1,6 +1,6 @@
 {
   "name": "@liuyunjs/react-tabs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "react-tabs",
   "author": "liuyunjs",
   "license": "MIT",
@@ -10,9 +10,9 @@
   "unpkg": "dist/react-tabs.min.js",
   "private": false,
   "dependencies": {
-    "@liuyunjs/react-carousel": "^0.0.2",
+    "@liuyunjs/react-carousel": "^0.0.3",
     "@liuyunjs/react-gesture": "^0.0.2",
-    "@liuyunjs/react-scroll": "^0.0.10",
+    "@liuyunjs/react-scroll": "^0.0.11",
     "@liuyunjs/render-class-name": "^0.0.1",
     "@liuyunjs/scroll-consts": "^0.0.1",
     "@liuyunjs/scroll-utils": "^0.0.1",

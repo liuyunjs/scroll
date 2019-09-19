@@ -1,6 +1,6 @@
 {
   "name": "@liuyunjs/react-carousel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "react-carousel",
   "author": "liuyunjs",
   "license": "MIT",
@@ -11,7 +11,7 @@
   "private": false,
   "dependencies": {
     "@liuyunjs/react-gesture": "^0.0.2",
-    "@liuyunjs/react-scroll": "^0.0.10",
+    "@liuyunjs/react-scroll": "^0.0.11",
     "@liuyunjs/render-class-name": "^0.0.1",
     "@liuyunjs/scroll-consts": "^0.0.1",
     "@liuyunjs/scroll-utils": "^0.0.1",

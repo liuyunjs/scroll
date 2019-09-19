@@ -100,7 +100,7 @@ export default class DotsItem extends React.PureComponent<DotsItemProps, DotsIte
     const {activeStyle, prefixCls, style, onClick} = this.props;
 
     const itemCls = renderClassName(prefixCls, 'item');
-    const pointCls = renderClassName(prefixCls, 'point');
+    const pointCls = renderClassName(itemCls, 'inactive');
 
     return (
       <div onClick={onClick} className={itemCls}>
@@ -109,7 +109,7 @@ export default class DotsItem extends React.PureComponent<DotsItemProps, DotsIte
           ref={this.active}
           className={classnames.default({
             [pointCls]: true,
-            [renderClassName(pointCls, 'active')]: true,
+            [renderClassName(itemCls, 'active')]: true,
           })}
           style={{
             ...style,

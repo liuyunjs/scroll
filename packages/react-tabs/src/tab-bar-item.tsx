@@ -13,6 +13,8 @@ import {styler, ValueReaction} from 'popmotion';
 import {Styler} from 'stylefire';
 import {getOpacity, DotsItemState} from '@liuyunjs/react-carousel';
 import renderCls from '@liuyunjs/render-class-name';
+import {LAYOUT_KEY} from './tab-bar';
+import {ReactNode} from 'react';
 
 export interface TabBarItemProps {
   tab?: any,
@@ -29,6 +31,7 @@ export interface TabBarItemProps {
   loopClonesPerSide?: number,
   go?: (n: number) => any,
   onClick?: (e: SyntheticEvent) => any,
+  renderBar?: (tab: any, index: number) => ReactNode,
 }
 
 
@@ -82,9 +85,14 @@ export default class TabBarItem extends React.PureComponent<TabBarItemProps, Dot
       tab,
       type,
       prefixCls,
+      direction,
+      total,
+      renderBar,
+      itemIndex,
     } = this.props;
 
     const itemCls = renderCls(prefixCls, 'item');
+    const item = renderBar ? renderBar(tab, itemIndex) : tab.title;
 
     return (
       <div
@@ -93,13 +101,16 @@ export default class TabBarItem extends React.PureComponent<TabBarItemProps, Dot
           [itemCls]: true,
           [renderCls(itemCls, type)]: true,
         })}
+        style={{
+          [LAYOUT_KEY[direction]]: type === 'layout' ? `${(100 / Math.min(5, total))}%` : null,
+        }}
       >
         <div
           ref={this.inactiveRef}
           className={renderCls(itemCls, 'inactive')}
           style={style}
         >
-          {tab.title}
+          {item}
         </div>
         <div
           ref={this.activeRef}
@@ -109,7 +120,7 @@ export default class TabBarItem extends React.PureComponent<TabBarItemProps, Dot
             ...activeStyle,
           }}
         >
-          {tab.title}
+          {item}
         </div>
       </div>
     );

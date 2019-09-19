@@ -20,7 +20,7 @@ import {
 import {BounceObj, Bounces, OffsetObj} from '@liuyunjs/scroll-utils';
 import Timer from '@liuyunjs/timer';
 import renderClassName from '@liuyunjs/render-class-name';
-// import connectScroll from './connect-scroll';
+import connectScroll from './connect-scroll';
 import connectScrollController from './connect-scroll-controller';
 // import './style.less';
 
@@ -37,7 +37,7 @@ export interface SubViewProps extends ScrollViewCoreProps {
   controller?: any,
   level?: number,
   label?: string,
-  // view?: any,
+  view?: any,
   prefixCls?: string,
 }
 
@@ -135,11 +135,11 @@ class SubView extends React.PureComponent<SubViewProps> implements ScrollView, S
       children,
       style,
       direction,
-      // view,
+      view,
       prefixCls,
     } = this.props;
 
-    // this.parentView = view;
+    this.parentView = view;
 
     const directionCls = renderClassName(prefixCls, direction);
 
@@ -187,4 +187,4 @@ const ViewBridge = React.forwardRef((props: SubViewProps, ref: RefObject<any>) =
   )
 });
 
-export default connectScrollController(ViewBridge);
+export default connectScroll(connectScrollController(ViewBridge));

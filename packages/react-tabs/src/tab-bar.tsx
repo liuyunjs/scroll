@@ -39,7 +39,7 @@ export interface Layout {
 export interface TabBarProps {
   tabs?: any[],
   position?: 'left' | 'top' | 'right' | 'bottom',
-  renderBar?: (tab: any, go: (n: number) => any, value: ValueReaction, ref: RefObject<any>, direction: 'vertical' | 'horizontal', index: number) => ReactNode,
+  renderBar?: (tab: any, index: number) => ReactNode,
   direction?: 'vertical' | 'horizontal',
   value?: ValueReaction,
   type?: 'layout' | 'auto',
@@ -128,9 +128,8 @@ export default class TabBar extends React.PureComponent<TabBarProps, TabBarState
   };
 
   render() {
-    const {tabs, renderBar, prefixCls, direction, value, ...restProps} = this.props;
+    const {tabs, prefixCls, direction, value, ...restProps} = this.props;
     const {refs, layout} = this.state;
-
     const barCls = renderCls(prefixCls, 'bar');
 
     return (
@@ -142,26 +141,24 @@ export default class TabBar extends React.PureComponent<TabBarProps, TabBarState
           deceleration={1}
           showIndicator={false}
           containerStyle={{
-            [LAYOUT_KEY[direction]]: restProps.type === 'layout' ? `${restProps.total * 20}%` : null,
+            [LAYOUT_KEY[direction]]: restProps.type === 'layout' ? `${Math.max(5, restProps.total) * 20}%` : null,
           }}
         >
           <React.Fragment>
             {
               tabs.map((tab, index) => {
-                return renderBar
-                  ? renderBar(tab, restProps.go, value, refs[index], direction, index)
-                  : (
-                    <TabBarItem
-                      {...restProps}
-                      prefixCls={barCls}
-                      value={value}
-                      ref={refs[index]}
-                      direction={direction}
-                      key={index}
-                      tab={tab}
-                      itemIndex={index}
-                    />
-                  )
+                return (
+                  <TabBarItem
+                    {...restProps}
+                    prefixCls={barCls}
+                    value={value}
+                    ref={refs[index]}
+                    direction={direction}
+                    key={index}
+                    tab={tab}
+                    itemIndex={index}
+                  />
+                );
               })
             }
             {

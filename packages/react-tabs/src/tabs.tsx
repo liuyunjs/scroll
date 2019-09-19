@@ -10,13 +10,12 @@ import * as React from 'react';
 import {ReactNode} from 'react';
 import Carousel, {CarouselProps} from '@liuyunjs/react-carousel';
 import {RefObject} from 'react';
-import {ValueReaction} from 'popmotion';
 import TabBar from './tab-bar';
 
 export interface TabsProps extends CarouselProps {
   tabs: any[],
   renderTabBar?: (props: any) => ReactNode,
-  renderBar?: (tab: any, go: (n: number) => any, value: ValueReaction, ref: RefObject<any>, direction: 'vertical' | 'horizontal', index: number) => ReactNode,
+  renderBar?: (tab: any, index: number) => ReactNode,
   tabBarPosition?: 'left' | 'top' | 'right' | 'bottom',
   direction?: 'vertical' | 'horizontal',
   defaultActiveKey?: number,

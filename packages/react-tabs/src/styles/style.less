@@ -14,7 +14,7 @@
 
   &-vertical {
 
-    .tabs {
+    > .tabs {
       &-item {
         display: block;
       }
@@ -22,27 +22,30 @@
       &-bar {
         width: 44px;
         height: 100%;
-        &-indicator {
-          width: 2px;
-        }
 
+        > .scroll {
+          > .scroll-target {
+            > .tabs-bar {
+              &-indicator {
+                width: 2px;
+              }
 
-        .vertical {
-          width: 2px;
-        }
+              &-item {
+                width: 100%;
 
-        &-item {
-          width: 100%;
+                &-auto {
+                  margin-top: 15px;
+                  margin-bottom: 15px;
+                }
 
-          &-auto {
-            margin-top: 15px;
-            margin-bottom: 15px;
+                &-layout {
+                  height: 20%;
+                }
+              }
+            }
           }
-
-          &-layout {
-            height: 20%;
-          }
         }
+
       }
     }
   }
@@ -50,7 +53,7 @@
   &-horizontal {
     flex-direction: column;
 
-    .tabs{
+    > .tabs {
       &-item {
         display: inline-block;
         vertical-align: top;
@@ -59,22 +62,28 @@
         height: 44px;
         width: 100%;
 
-        &-indicator {
-          height: 2px;
-        }
+        > .scroll {
+          > .scroll-target {
+            > .tabs-bar {
+              &-indicator {
+                height: 2px;
+              }
 
-        &-item {
-          display: inline-block;
-          vertical-align: top;
-          height: 100%;
+              &-item {
+                display: inline-block;
+                vertical-align: top;
+                height: 100%;
 
-          &-auto {
-            margin-left: 15px;
-            margin-right: 15px;
-          }
+                &-auto {
+                  margin-left: 15px;
+                  margin-right: 15px;
+                }
 
-          &-layout {
-            width: 20%;
+                &-layout {
+                  width: 20%;
+                }
+              }
+            }
           }
         }
       }
@@ -82,40 +91,64 @@
   }
 
   &-bottom {
-    .tabs {
+    > .tabs {
       &-bar {
-        &-indicator {
-          top: 0;
+        > .scroll {
+          > .scroll-target {
+            > .tabs-bar {
+              &-indicator {
+                top: 0;
+              }
+            }
+          }
         }
       }
     }
   }
 
   &-top {
-    .tabs {
+    > .tabs {
       &-bar {
-        &-indicator {
-          bottom: 0;
+        > .scroll {
+          > .scroll-target {
+            > .tabs-bar {
+              &-indicator {
+                bottom: 0;
+              }
+            }
+          }
         }
       }
     }
   }
 
   &-left {
-    .tabs {
+    > .tabs {
       &-bar {
-        &-indicator {
-          right: 0;
+        > .scroll {
+          > .scroll-target {
+            > .tabs-bar {
+              &-indicator {
+                right: 0;
+              }
+            }
+          }
         }
       }
     }
   }
 
   &-right {
-    .tabs {
+    > .tabs {
       &-bar {
-        &-indicator {
-          left: 0;
+        > .scroll {
+          > .scroll-target {
+            > .tabs-bar {
+              &-indicator {
+                left: 0;
+              }
+            }
+          }
         }
       }
     }
